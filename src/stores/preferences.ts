@@ -63,7 +63,7 @@ export const usePreferences = create<PreferencesState>()(
       density: 'comfortable',
       reducedMotion: false,
       highContrast: false,
-      dimSeenRepos: true,
+      dimSeenRepos: false,
 
       // Actions
       setTheme: (theme) => set({ theme }),
