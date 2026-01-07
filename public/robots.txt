@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://githunt.emre.zip/sitemap.xml
