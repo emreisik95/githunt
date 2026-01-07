@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode - slate foundation */
+    --background: 210 40% 98%;      /* slate-50 */
+    --foreground: 222 47% 11%;      /* slate-900 */
+    --surface: 0 0% 100%;           /* white */
+    --muted: 215 16% 47%;           /* slate-500 */
+    --muted-foreground: 215 20% 65%;
+    --accent: 147 35% 68%;          /* #91CBA6 */
+    --accent-foreground: 222 47% 11%;
+    --border: 0 0% 0% / 0.08;
+    --ring: 147 35% 68%;
+  }
+
+  .dark {
+    /* Dark mode - slate foundation */
+    --background: 222 47% 5%;       /* slate-950 */
+    --foreground: 210 40% 98%;      /* slate-50 */
+    --surface: 222 47% 9%;          /* slate-900 */
+    --muted: 215 20% 55%;           /* slate-400 */
+    --muted-foreground: 215 16% 47%;
+    --accent: 147 35% 68%;          /* #91CBA6 */
+    --accent-foreground: 222 47% 11%;
+    --border: 0 0% 100% / 0.1;
+    --ring: 147 35% 68%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Monospace for data */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  /* Touch device optimizations */
+  @media (hover: hover) {
+    .hover-lift:hover {
+      @apply bg-surface/80;
+    }
+  }
+
+  /* Safe area padding for mobile */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Tap feedback for touch devices */
+  @media (hover: none) {
+    .tap-feedback:active {
+      @apply scale-[0.98] transition-transform duration-75;
+    }
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text clamping */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* ========================================
+   Accessibility Settings
+   ======================================== */
+
+/* Font Sizes */
+.font-size-small {
+  font-size: 13px;
+}
+
+.font-size-medium {
+  font-size: 14px;
+}
+
+.font-size-large {
+  font-size: 16px;
+}
+
+/* Scale text elements proportionally */
+.font-size-small .text-xs { font-size: 10px; }
+.font-size-small .text-sm { font-size: 12px; }
+.font-size-small .text-base { font-size: 13px; }
+.font-size-small .text-lg { font-size: 15px; }
+.font-size-small .text-xl { font-size: 17px; }
+
+.font-size-large .text-xs { font-size: 12px; }
+.font-size-large .text-sm { font-size: 14px; }
+.font-size-large .text-base { font-size: 16px; }
+.font-size-large .text-lg { font-size: 18px; }
+.font-size-large .text-xl { font-size: 20px; }
+
+/* Font Families */
+.font-geist {
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-system {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-mono-family {
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Line Heights */
+.line-height-compact {
+  line-height: 1.3;
+}
+
+.line-height-normal {
+  line-height: 1.5;
+}
+
+.line-height-relaxed {
+  line-height: 1.75;
+}
+
+/* Density - affects spacing through CSS custom property */
+.density-compact {
+  --density-spacing: 0.75;
+}
+
+.density-comfortable {
+  --density-spacing: 1;
+}
+
+.density-spacious {
+  --density-spacing: 1.25;
+}
+
+/* Apply density to common spacing patterns */
+.density-compact .gap-4 { gap: 12px; }
+.density-compact .gap-6 { gap: 18px; }
+.density-compact .p-4 { padding: 12px; }
+.density-compact .p-6 { padding: 18px; }
+.density-compact .py-3 { padding-top: 9px; padding-bottom: 9px; }
+.density-compact .py-4 { padding-top: 12px; padding-bottom: 12px; }
+.density-compact .py-6 { padding-top: 18px; padding-bottom: 18px; }
+
+.density-spacious .gap-4 { gap: 20px; }
+.density-spacious .gap-6 { gap: 30px; }
+.density-spacious .p-4 { padding: 20px; }
+.density-spacious .p-6 { padding: 30px; }
+.density-spacious .py-3 { padding-top: 15px; padding-bottom: 15px; }
+.density-spacious .py-4 { padding-top: 20px; padding-bottom: 20px; }
+.density-spacious .py-6 { padding-top: 30px; padding-bottom: 30px; }
+
+/* Reduced Motion */
+.reduce-motion,
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  --border: 0 0% 0% / 0.25;
+}
+
+.high-contrast.dark {
+  --border: 0 0% 100% / 0.3;
+}
+
+.high-contrast .text-muted {
+  color: hsl(var(--foreground) / 0.8);
+}
+
+.high-contrast .bg-surface {
+  border: 1px solid hsl(var(--border));
+}
+
+.high-contrast .border-border {
+  border-color: hsl(var(--foreground) / 0.3);
+}
